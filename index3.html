@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QBDP — Système de Détection Intelligent</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --blue: #1a56db;
+    --blue-dark: #1e3a8a;
+    --green: #16a34a;
+    --amber: #d97706;
+    --red: #dc2626;
+    --gray: #6b7280;
+    --light: #f4f5f7;
+    --white: #ffffff;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0f172a;
+    color: white;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: rgba(26,86,219,0.2);
+    border: 1px solid rgba(26,86,219,0.4);
+    color: #60a5fa;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .header p {
+    color: #94a3b8;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  /* Modes grid */
+  .modes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .mode-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .mode-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.16);
+  }
+  .mode-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 20px 20px 0 0;
+  }
+  .mode-card.blue::before { background: linear-gradient(90deg, #1a56db, #60a5fa); }
+  .mode-card.green::before { background: linear-gradient(90deg, #16a34a, #4ade80); }
+  .mode-card.amber::before { background: linear-gradient(90deg, #d97706, #fbbf24); }
+
+  .mode-icon {
+    font-size: 36px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .mode-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .mode-subtitle {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .mode-desc {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .mode-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 8px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+  .tag-blue { background: rgba(26,86,219,0.2); color: #60a5fa; }
+  .tag-green { background: rgba(22,163,74,0.2); color: #4ade80; }
+  .tag-amber { background: rgba(217,119,6,0.2); color: #fbbf24; }
+  .tag-red { background: rgba(220,38,38,0.2); color: #f87171; }
+
+  /* Timeline */
+  .timeline-section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 36px;
+    margin-bottom: 48px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title span {
+    font-size: 22px;
+  }
+
+  .timeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-step {
+    flex: 1;
+    position: relative;
+    text-align: center;
+  }
+
+  .timeline-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 28px;
+    right: -1px;
+    width: calc(100%);
+    height: 2px;
+    background: linear-gradient(90deg, rgba(26,86,219,0.6), rgba(96,165,250,0.3));
+    z-index: 0;
+  }
+
+  .step-dot {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 12px;
+    position: relative;
+    z-index: 1;
+    border: 2px solid;
+  }
+  .step-dot.s1 { background: rgba(26,86,219,0.2); border-color: #1a56db; }
+  .step-dot.s2 { background: rgba(96,165,250,0.2); border-color: #60a5fa; }
+  .step-dot.s3 { background: rgba(22,163,74,0.2); border-color: #16a34a; }
+  .step-dot.s4 { background: rgba(217,119,6,0.2); border-color: #d97706; }
+  .step-dot.s5 { background: rgba(220,38,38,0.2); border-color: #dc2626; }
+
+  .step-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 4px;
+  }
+  .step-detail {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.4;
+    padding: 0 8px;
+  }
+  .step-time {
+    font-size: 10px;
+    color: #475569;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* Distance visualization */
+  .distance-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .distance-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 28px;
+  }
+
+  .distance-visual {
+    position: relative;
+    height: 160px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rings {
+    position: relative;
+    width: 140px;
+    height: 140px;
+  }
+
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px dashed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ring-1 { width: 50px; height: 50px; border-color: #dc2626; background: rgba(220,38,38,0.1); }
+  .ring-2 { width: 90px; height: 90px; border-color: #d97706; }
+  .ring-3 { width: 130px; height: 130px; border-color: #16a34a; }
+
+  .person-icon { font-size: 20px; z-index: 10; position: relative; }
+
+  .door-icon {
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+  }
+
+  .distance-labels {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dist-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+  }
+  .dist-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Bureau problem */
+  .bureau-card {
+    background: rgba(220,38,38,0.06);
+    border: 1px solid rgba(220,38,38,0.2);
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .bureau-card .title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #f87171;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .bureau-card .solution {
+    background: rgba(22,163,74,0.1);
+    border: 1px solid rgba(22,163,74,0.2);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 12px;
+    color: #4ade80;
+    margin-top: 10px;
+  }
+  .bureau-card p { font-size: 12px; color: #94a3b8; line-height: 1.6; }
+
+  /* Config table */
+  .config-section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 36px;
+    margin-bottom: 48px;
+  }
+
+  .config-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  .config-table th {
+    font-size: 11px;
+    font-weight: 600;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .config-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #cbd5e1;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .config-table tr:last-child td { border-bottom: none; }
+  .config-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .pill-blue { background: rgba(26,86,219,0.2); color: #60a5fa; }
+  .pill-green { background: rgba(22,163,74,0.2); color: #4ade80; }
+  .pill-amber { background: rgba(217,119,6,0.2); color: #fbbf24; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    color: #334155;
+    font-size: 12px;
+  }
+  .footer strong { color: #475569; }
+
+  @media (max-width: 768px) {
+    .modes-grid { grid-template-columns: 1fr; }
+    .distance-section { grid-template-columns: 1fr; }
+    .header h1 { font-size: 28px; }
+    .timeline { flex-direction: column; gap: 20px; }
+    .timeline-step::after { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">QBDP — Technologie d'accès</div>
+    <h1>Système de Détection Intelligent</h1>
+    <p>Trois modes combinés pour une expérience d'accès fluide, sécurisée et contextuelle</p>
+  </div>
+
+  <!-- 3 modes -->
+  <div class="modes-grid">
+
+    <div class="mode-card blue">
+      <span class="mode-icon">📡</span>
+      <div class="mode-subtitle">Mode 1</div>
+      <div class="mode-title">Proximité BLE</div>
+      <div class="mode-desc">Le lecteur QBDP détecte votre badge Bluetooth. L'accès s'ouvre automatiquement à moins de 2 mètres et se ferme à votre départ.</div>
+      <span class="mode-tag tag-blue">Bluetooth Low Energy</span>
+      <span class="mode-tag tag-blue">0 — 5m</span>
+      <span class="mode-tag tag-blue">Temps réel</span>
+    </div>
+
+    <div class="mode-card green">
+      <span class="mode-icon">🌍</span>
+      <div class="mode-subtitle">Mode 2</div>
+      <div class="mode-title">Geofencing GPS</div>
+      <div class="mode-desc">Une zone virtuelle autour de votre domicile ou site. Le portail s'anticipe à votre approche et se ferme à votre départ de zone.</div>
+      <span class="mode-tag tag-green">GPS</span>
+      <span class="mode-tag tag-green">50 — 500m</span>
+      <span class="mode-tag tag-green">Maison / Site</span>
+    </div>
+
+    <div class="mode-card amber">
+      <span class="mode-icon">👆</span>
+      <div class="mode-subtitle">Mode 3</div>
+      <div class="mode-title">Commande Manuelle</div>
+      <div class="mode-desc">Vous décidez. Ouvrez depuis l'app à tout moment, où que vous soyez. Idéal pour accueillir un visiteur ou accès ponctuel.</div>
+      <span class="mode-tag tag-amber">App mobile</span>
+      <span class="mode-tag tag-amber">Distance illimitée</span>
+      <span class="mode-tag tag-amber">Contrôle total</span>
+    </div>
+
+  </div>
+
+  <!-- Timeline scénario arrivée -->
+  <div class="timeline-section">
+    <div class="section-title"><span>🚗</span> Scénario : Retour à domicile — Séquence intelligente</div>
+    <div class="timeline">
+
+      <div class="timeline-step">
+        <div class="step-dot s1">🌍</div>
+        <div class="step-label">Zone détectée</div>
+        <div class="step-detail">GPS entre dans la zone de 200m autour du domicile</div>
+        <div class="step-time">~ 2 min avant</div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="step-dot s2">📡</div>
+        <div class="step-label">BLE activé</div>
+        <div class="step-detail">Lecteur QBDP se met en écoute active du badge</div>
+        <div class="step-time">~ 30 sec avant</div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="step-dot s3">🔓</div>
+        <div class="step-label">Accès ouvert</div>
+        <div class="step-detail">Portail / porte s'ouvre automatiquement à 2m</div>
+        <div class="step-time">À l'arrivée</div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="step-dot s4">⏱️</div>
+        <div class="step-label">Présence confirmée</div>
+        <div class="step-detail">Détection de présence prolongée — pas de fermeture intempestive</div>
+        <div class="step-time">Dans les 5 min</div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="step-dot s5">🔒</div>
+        <div class="step-label">Fermeture auto</div>
+        <div class="step-detail">Signal BLE perdu + GPS quitte zone → fermeture sécurisée</div>
+        <div class="step-time">Au départ</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Distance + Bureau -->
+  <div class="distance-section">
+
+    <div class="distance-card">
+      <div class="section-title" style="font-size:16px; margin-bottom:16px;"><span>📏</span> Zones de détection BLE</div>
+      <div class="distance-visual">
+        <div class="rings">
+          <div class="ring ring-3"></div>
+          <div class="ring ring-2"></div>
+          <div class="ring ring-1">
+            <span class="person-icon">🚶</span>
+          </div>
+          <div class="door-icon">🚪</div>
+        </div>
+      </div>
+      <div class="distance-labels">
+        <div class="dist-label">
+          <div class="dist-dot" style="background:#16a34a;"></div>
+          <span style="color:#4ade80; font-weight:600;">+3m</span>
+          <span style="color:#64748b;">— Veille, pas d'action</span>
+        </div>
+        <div class="dist-label">
+          <div class="dist-dot" style="background:#d97706;"></div>
+          <span style="color:#fbbf24; font-weight:600;">1-3m</span>
+          <span style="color:#64748b;">— Pré-alerte, lecteur actif</span>
+        </div>
+        <div class="dist-label">
+          <div class="dist-dot" style="background:#dc2626;"></div>
+          <span style="color:#f87171; font-weight:600;">-1m</span>
+          <span style="color:#64748b;">— Ouverture immédiate</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="distance-card">
+      <div class="section-title" style="font-size:16px; margin-bottom:16px;"><span>⚙️</span> Gestion du contexte bureau</div>
+
+      <div class="bureau-card">
+        <div class="title">⚠️ Problème identifié</div>
+        <p>Si l'employé est assis à son bureau à 1,5m de la porte, le système naïf fermerait la porte en continu — inacceptable en usage professionnel.</p>
+        <div class="solution">
+          ✅ <strong>Solution QBDP :</strong> Mode "Présence prolongée" — si l'utilisateur est immobile depuis plus de X minutes dans la zone, le système maintient l'accès ouvert jusqu'à détection de départ réel.
+        </div>
+      </div>
+
+      <div style="margin-top: 16px; font-size: 12px; color: #64748b; line-height: 1.7;">
+        Le délai et le seuil de distance sont <strong style="color:#94a3b8;">configurables par porte</strong> depuis le dashboard admin — adapté à chaque contexte (bureau, couloir, parking, domicile).
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Config table -->
+  <div class="config-section">
+    <div class="section-title"><span>🎛️</span> Paramètres configurables par accès</div>
+    <table class="config-table">
+      <thead>
+        <tr>
+          <th>Paramètre</th>
+          <th>Description</th>
+          <th>Valeur par défaut</th>
+          <th>Mode</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Distance ouverture</td>
+          <td>Distance BLE déclenchant l'ouverture</td>
+          <td>1,5 mètre</td>
+          <td><span class="pill pill-blue">BLE</span></td>
+        </tr>
+        <tr>
+          <td>Zone GPS</td>
+          <td>Rayon de la zone de pré-activation</td>
+          <td>200 mètres</td>
+          <td><span class="pill pill-green">GPS</span></td>
+        </tr>
+        <tr>
+          <td>Délai fermeture</td>
+          <td>Temps avant fermeture après perte signal</td>
+          <td>30 secondes</td>
+          <td><span class="pill pill-blue">BLE</span></td>
+        </tr>
+        <tr>
+          <td>Mode présence</td>
+          <td>Maintien ouverture si immobile dans zone</td>
+          <td>Activé — 5 min</td>
+          <td><span class="pill pill-blue">BLE</span></td>
+        </tr>
+        <tr>
+          <td>Confirmation manuelle</td>
+          <td>Demande confirmation sur app avant ouverture</td>
+          <td>Désactivé</td>
+          <td><span class="pill pill-amber">Manuel</span></td>
+        </tr>
+        <tr>
+          <td>Plages horaires</td>
+          <td>Activer la détection auto sur horaires définis</td>
+          <td>08h00 — 20h00</td>
+          <td><span class="pill pill-blue">BLE</span> <span class="pill pill-green">GPS</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <strong>QBDP</strong> — Système de Badge Digital & Accès Intelligent · Confidentiel investisseurs
+  </div>
+
+</div>
+</body>
+</html>
