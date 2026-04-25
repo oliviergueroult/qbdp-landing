@@ -5,7 +5,6 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QBDP — Quality Badge & Digital Protocol</title>
-  <link rel="icon" href="favicon.ico" />
   <link rel="apple-touch-icon" href="assets/logo2.png" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,7 +15,6 @@
     nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid #f0f0f0; }
     .nav-logo { display: flex; align-items: center; gap: 10px; }
     .nav-logo img { width: 120px; height: 120px; border-radius: 20px; }
-    .nav-logo span { font-size: 20px; font-weight: 700; color: #1a56db; }
     .nav-links { display: flex; gap: 32px; font-size: 14px; color: #6b7280; }
     .nav-links a:hover { color: #1a56db; }
     .nav-cta { background: #1a56db; color: white; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; }
@@ -63,20 +61,36 @@
     .step p { font-size: 13px; color: #6b7280; line-height: 1.6; }
 
     /* PRICING */
-    .pricing { padding: 100px 48px; text-align: center; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 56px auto 0; }
-    .pricing-card { border-radius: 16px; padding: 32px; border: 1px solid #e5e7eb; text-align: left; }
-    .pricing-card.popular { border-color: #1a56db; background: #f0f5ff; }
-    .popular-badge { background: #1a56db; color: white; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 10px; display: inline-block; margin-bottom: 16px; }
-    .pricing-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .pricing-price { font-size: 36px; font-weight: 800; color: #1a56db; margin-bottom: 4px; }
-    .pricing-price span { font-size: 16px; font-weight: 400; color: #6b7280; }
-    .pricing-desc { font-size: 13px; color: #6b7280; margin-bottom: 24px; }
-    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
-    .pricing-features li { font-size: 13px; color: #374151; display: flex; gap: 8px; }
-    .pricing-features li::before { content: "✓"; color: #16a34a; font-weight: 700; }
-    .pricing-btn { width: 100%; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; background: #1a56db; color: white; }
-    .pricing-card:not(.popular) .pricing-btn { background: white; color: #1a56db; border: 2px solid #bfdbfe; }
+    .pricing { padding: 100px 48px; text-align: center; background: #f9fafb; }
+    .pricing-toggle { display: inline-flex; background: #e5e7eb; border-radius: 10px; padding: 4px; margin: 24px auto; gap: 4px; }
+    .pricing-toggle button { padding: 8px 20px; border-radius: 8px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; background: transparent; color: #6b7280; transition: all .2s; }
+    .pricing-toggle button.active { background: white; color: #1a1a2e; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+    .trial-badge { display: inline-block; background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 20px; margin-bottom: 32px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; }
+    .pricing-card { border-radius: 16px; padding: 28px 20px; border: 1px solid #e5e7eb; text-align: left; background: white; display: flex; flex-direction: column; }
+    .pricing-card.popular { border-color: #1a56db; background: #f0f5ff; box-shadow: 0 8px 32px rgba(26,86,219,0.15); }
+    .pricing-card.enterprise { background: #1a1a2e; border-color: #1a1a2e; color: white; }
+    .popular-badge { background: #1a56db; color: white; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 10px; display: inline-block; margin-bottom: 12px; }
+    .pricing-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .pricing-price { font-size: 32px; font-weight: 800; color: #1a56db; margin: 8px 0 2px; }
+    .pricing-card.enterprise .pricing-price { color: #60a5fa; }
+    .pricing-price span { font-size: 14px; font-weight: 400; color: #6b7280; }
+    .pricing-card.enterprise .pricing-price span { color: #94a3b8; }
+    .pricing-annual { font-size: 11px; color: #16a34a; font-weight: 600; margin-bottom: 4px; }
+    .pricing-desc { font-size: 12px; color: #6b7280; margin-bottom: 16px; min-height: 32px; }
+    .pricing-card.enterprise .pricing-desc { color: #94a3b8; }
+    .pricing-divider { border: none; border-top: 1px solid #e5e7eb; margin: 12px 0; }
+    .pricing-card.enterprise .pricing-divider { border-color: rgba(255,255,255,0.1); }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; flex: 1; }
+    .pricing-features li { font-size: 12px; color: #374151; display: flex; gap: 6px; align-items: flex-start; }
+    .pricing-features li::before { content: "✓"; color: #16a34a; font-weight: 700; flex-shrink: 0; }
+    .pricing-card.enterprise .pricing-features li { color: #cbd5e1; }
+    .pricing-card.enterprise .pricing-features li::before { color: #60a5fa; }
+    .pricing-btn { width: 100%; padding: 11px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: #1a56db; color: white; margin-top: auto; }
+    .pricing-card:not(.popular):not(.enterprise) .pricing-btn { background: white; color: #1a56db; border: 2px solid #bfdbfe; }
+    .pricing-card.enterprise .pricing-btn { background: white; color: #1a1a2e; }
+    .employees-badge { display: inline-block; background: #eff6ff; color: #1a56db; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; margin-bottom: 8px; }
+    .pricing-card.enterprise .employees-badge { background: rgba(96,165,250,0.2); color: #60a5fa; }
 
     /* CTA */
     .cta { padding: 100px 48px; background: #1a56db; text-align: center; color: white; }
@@ -87,7 +101,6 @@
     /* FOOTER */
     footer { padding: 48px; border-top: 1px solid #f3f4f6; display: flex; justify-content: space-between; align-items: center; }
     .footer-logo { display: flex; align-items: center; gap: 10px; }
-    .footer-logo span { font-size: 18px; font-weight: 700; color: #1a56db; }
     footer p { font-size: 13px; color: #9ca3af; }
 
     @media (max-width: 768px) {
@@ -118,7 +131,6 @@
 <nav>
   <div class="nav-logo">
     <img src="assets/logo2.png" alt="QBDP" />
-    
   </div>
   <div class="nav-links">
     <a href="#fonctionnalites">Fonctionnalités</a>
@@ -133,9 +145,9 @@
 <section class="hero">
   <div class="hero-badge">🛡️ Quality Badge & Digital Protocol</div>
   <h1>Le badge d'accès<br /><span>100% digital</span></h1>
-  <p>Remplacez vos badges physiques par une app mobile. Gérez les accès de vos employés en temps réel, depuis n'importe où.</p>
+  <p>Remplacez vos badges physiques par une app mobile. Gérez les accès de vos employés, clients et patients en temps réel, depuis n'importe où.</p>
   <div class="hero-btns">
-    <a href="https://qbdp-admin.vercel.app" class="btn-primary">Démarrer gratuitement</a>
+    <a href="https://qbdp-admin.vercel.app" class="btn-primary">🚀 Essai gratuit 15 jours</a>
     <a href="#comment" class="btn-secondary">Voir la démo</a>
   </div>
   <div class="hero-img">
@@ -150,8 +162,9 @@
           <div style="font-size:11px;font-weight:600;color:#6b7280;margin-bottom:12px">MENU</div>
           <div style="font-size:13px;font-weight:600;color:#1a56db;padding:8px;background:#eff6ff;border-radius:6px;margin-bottom:4px">Vue générale</div>
           <div style="font-size:13px;color:#6b7280;padding:8px">Employés</div>
+          <div style="font-size:13px;color:#6b7280;padding:8px">Clients / Patients</div>
           <div style="font-size:13px;color:#6b7280;padding:8px">Accès & zones</div>
-          <div style="font-size:13px;color:#6b7280;padding:8px">Historique</div>
+          <div style="font-size:13px;color:#6b7280;padding:8px">Communications</div>
         </div>
         <div style="flex:1">
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
@@ -160,8 +173,8 @@
               <div style="font-size:11px;color:#6b7280;margin-top:2px">Employés actifs</div>
             </div>
             <div style="background:#f0fdf4;border-radius:10px;padding:16px;border:1px solid #86efac">
-              <div style="font-size:22px;font-weight:800;color:#16a34a">6</div>
-              <div style="font-size:11px;color:#6b7280;margin-top:2px">Zones actives</div>
+              <div style="font-size:22px;font-weight:800;color:#16a34a">87</div>
+              <div style="font-size:11px;color:#6b7280;margin-top:2px">Clients présents</div>
             </div>
             <div style="background:#fef9c3;border-radius:10px;padding:16px;border:1px solid #fde047">
               <div style="font-size:22px;font-weight:800;color:#ca8a04">142</div>
@@ -177,13 +190,13 @@
                 <span style="color:#9ca3af">09:42</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
-                <span style="color:#1a1a2e;font-weight:500">Jean Martin</span>
-                <span style="color:#16a34a;font-size:11px">Parking</span>
+                <span style="color:#1a1a2e;font-weight:500">M. Durand — Ch. 204</span>
+                <span style="color:#16a34a;font-size:11px">Accès chambre</span>
                 <span style="color:#9ca3af">09:38</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px">
-                <span style="color:#1a1a2e;font-weight:500">Sara Blanc</span>
-                <span style="color:#16a34a;font-size:11px">Salle serveur</span>
+                <span style="color:#1a1a2e;font-weight:500">Jean Martin</span>
+                <span style="color:#16a34a;font-size:11px">Parking</span>
                 <span style="color:#9ca3af">09:31</span>
               </div>
             </div>
@@ -198,11 +211,11 @@
 <section class="logos">
   <p>Ils nous font confiance</p>
   <div class="logos-grid">
-    <div class="logo-item">ACME Corp</div>
-    <div class="logo-item">TechPro</div>
-    <div class="logo-item">Groupe BTP</div>
-    <div class="logo-item">LogiStar</div>
-    <div class="logo-item">MedCenter</div>
+    <div class="logo-item">Hôtels & Resorts</div>
+    <div class="logo-item">Cliniques</div>
+    <div class="logo-item">Mairies</div>
+    <div class="logo-item">Résidences</div>
+    <div class="logo-item">Entreprises</div>
   </div>
 </section>
 
@@ -210,37 +223,37 @@
 <section class="features" id="fonctionnalites">
   <div class="section-label">Fonctionnalités</div>
   <div class="section-title">Tout ce dont vous avez besoin</div>
-  <div class="section-sub">Une solution complète pour remplacer vos badges physiques et gérer vos accès en temps réel.</div>
+  <div class="section-sub">Une solution complète pour gérer vos accès, vos équipes et vos clients depuis un seul endroit.</div>
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon">📱</div>
       <h3>Badge digital</h3>
-      <p>Chaque employé dispose d'un badge sur son smartphone. Fini les badges perdus ou oubliés.</p>
+      <p>Chaque employé, client ou patient dispose d'un badge sur son smartphone. Fini les badges perdus ou oubliés.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🔐</div>
       <h3>Contrôle d'accès</h3>
-      <p>Définissez qui peut accéder à quelle zone et à quelle heure. Modifiable en temps réel.</p>
+      <p>Définissez qui peut accéder à quelle zone et à quelle heure. Modifiable en temps réel depuis le dashboard.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <h3>Dashboard admin</h3>
-      <p>Visualisez toutes les entrées et sorties en temps réel depuis votre navigateur.</p>
+      <div class="feature-icon">📣</div>
+      <h3>Communications</h3>
+      <p>Envoyez des campagnes email et SMS à vos clients et employés. Templates visuels, anniversaires, événements.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">📧</div>
-      <h3>Invitation par email</h3>
-      <p>Ajoutez un employé et envoyez-lui une invitation par email en un clic. Activation en 2 minutes.</p>
+      <div class="feature-icon">🎨</div>
+      <h3>White Label</h3>
+      <p>Personnalisez l'app avec votre logo et vos couleurs. Vos clients voient votre marque, pas QBDP.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏥</div>
+      <h3>Clients & Patients</h3>
+      <p>Gérez vos clients hôteliers ou patients hospitaliers. Accès temporaires, dates de séjour, numéro de chambre.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🏠</div>
-      <h3>Extension privée</h3>
-      <p>Les employés peuvent étendre l'app à leur domicile : portail, garage, alarme. À 2€/mois.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⚡</div>
-      <h3>Module IoT ESP32</h3>
-      <p>Connectez un module hardware (~15€) à votre portail ou garage. Installation en 10 minutes.</p>
+      <h3>Extension Ma Maison</h3>
+      <p>Les employés peuvent étendre l'app à leur domicile : portail, garage, domotique. À 2€/mois.</p>
     </div>
   </div>
 </section>
@@ -256,22 +269,22 @@
     <div class="step">
       <div class="step-num">1</div>
       <h3>Créez votre compte</h3>
-      <p>Inscrivez-vous sur le dashboard admin et configurez votre entreprise.</p>
+      <p>Inscrivez-vous sur le dashboard admin et configurez votre établissement en marque blanche.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <h3>Ajoutez vos employés</h3>
-      <p>Importez ou ajoutez vos employés manuellement avec leur email.</p>
+      <h3>Ajoutez employés & clients</h3>
+      <p>Importez ou ajoutez manuellement avec leur email. Définissez les accès et plages horaires.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
       <h3>Invitez-les</h3>
-      <p>Un email est envoyé automatiquement. L'employé crée son mot de passe en 1 clic.</p>
+      <p>Un email est envoyé automatiquement. Activation en 1 clic depuis le smartphone.</p>
     </div>
     <div class="step">
       <div class="step-num">4</div>
       <h3>C'est prêt !</h3>
-      <p>L'employé ouvre les portes depuis son smartphone. Vous suivez tout en temps réel.</p>
+      <p>Ouverture des portes via Bluetooth. Vous suivez tout en temps réel depuis le dashboard.</p>
     </div>
   </div>
 </section>
@@ -283,14 +296,12 @@
     <div style="font-size:42px; font-weight:800; margin-bottom:12px; background:linear-gradient(135deg,#fff 0%,#60a5fa 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Détection Intelligente</div>
     <div style="font-size:17px; color:#94a3b8; max-width:520px; margin:0 auto; line-height:1.6;">Trois modes combinés pour une expérience d'accès fluide, sécurisée et contextuelle</div>
   </div>
-
-  <!-- 3 modes -->
   <div class="detection-modes" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1000px; margin:0 auto 48px;">
     <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:28px; border-top:3px solid #1a56db;">
       <div style="font-size:36px; margin-bottom:12px;">📡</div>
       <div style="font-size:11px; color:#475569; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Mode 1</div>
       <div style="font-size:17px; font-weight:700; margin-bottom:10px;">Proximité BLE</div>
-      <div style="font-size:13px; color:#94a3b8; line-height:1.7; margin-bottom:14px;">Le lecteur QBDP détecte votre badge Bluetooth. Ouverture automatique à moins de 2m, fermeture à votre départ.</div>
+      <div style="font-size:13px; color:#94a3b8; line-height:1.7; margin-bottom:14px;">Le lecteur QBDP détecte votre badge Bluetooth. Ouverture automatique à moins de 2m.</div>
       <span style="background:rgba(26,86,219,0.2); color:#60a5fa; font-size:11px; font-weight:600; padding:3px 10px; border-radius:8px; margin-right:6px;">0 — 5m</span>
       <span style="background:rgba(26,86,219,0.2); color:#60a5fa; font-size:11px; font-weight:600; padding:3px 10px; border-radius:8px;">Temps réel</span>
     </div>
@@ -298,7 +309,7 @@
       <div style="font-size:36px; margin-bottom:12px;">🌍</div>
       <div style="font-size:11px; color:#475569; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Mode 2</div>
       <div style="font-size:17px; font-weight:700; margin-bottom:10px;">Geofencing GPS</div>
-      <div style="font-size:13px; color:#94a3b8; line-height:1.7; margin-bottom:14px;">Zone virtuelle autour de votre domicile ou site. Le portail s'anticipe à votre approche et se ferme à votre départ.</div>
+      <div style="font-size:13px; color:#94a3b8; line-height:1.7; margin-bottom:14px;">Zone virtuelle autour de votre site. Le portail s'anticipe à votre approche.</div>
       <span style="background:rgba(22,163,74,0.2); color:#4ade80; font-size:11px; font-weight:600; padding:3px 10px; border-radius:8px; margin-right:6px;">50 — 500m</span>
       <span style="background:rgba(22,163,74,0.2); color:#4ade80; font-size:11px; font-weight:600; padding:3px 10px; border-radius:8px;">Domicile / Site</span>
     </div>
@@ -306,56 +317,17 @@
       <div style="font-size:36px; margin-bottom:12px;">👆</div>
       <div style="font-size:11px; color:#475569; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Mode 3</div>
       <div style="font-size:17px; font-weight:700; margin-bottom:10px;">Commande Manuelle</div>
-      <div style="font-size:13px; color:#94a3b8; line-height:1.7; margin-bottom:14px;">Ouvrez depuis l'app où que vous soyez. Idéal pour accueillir un visiteur ou un accès ponctuel à distance.</div>
+      <div style="font-size:13px; color:#94a3b8; line-height:1.7; margin-bottom:14px;">Ouvrez depuis l'app où que vous soyez. Idéal pour accueillir un visiteur à distance.</div>
       <span style="background:rgba(217,119,6,0.2); color:#fbbf24; font-size:11px; font-weight:600; padding:3px 10px; border-radius:8px; margin-right:6px;">App mobile</span>
       <span style="background:rgba(217,119,6,0.2); color:#fbbf24; font-size:11px; font-weight:600; padding:3px 10px; border-radius:8px;">Illimité</span>
     </div>
   </div>
-
-  <!-- Timeline -->
-  <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:36px; max-width:1000px; margin:0 auto 24px;">
-    <div style="font-size:17px; font-weight:700; margin-bottom:32px;">🚗 Scénario retour domicile — Séquence intelligente</div>
-    <div class="detection-timeline" style="display:grid; grid-template-columns:repeat(5,1fr); gap:8px; text-align:center;">
-      <div>
-        <div style="width:52px;height:52px;border-radius:50%;background:rgba(26,86,219,0.2);border:2px solid #1a56db;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 10px;">🌍</div>
-        <div style="font-size:12px;font-weight:600;margin-bottom:4px;">Zone détectée</div>
-        <div style="font-size:11px;color:#64748b;">GPS entre dans la zone 200m</div>
-        <div style="font-size:10px;color:#475569;margin-top:4px;font-style:italic;">~2 min avant</div>
-      </div>
-      <div>
-        <div style="width:52px;height:52px;border-radius:50%;background:rgba(96,165,250,0.2);border:2px solid #60a5fa;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 10px;">📡</div>
-        <div style="font-size:12px;font-weight:600;margin-bottom:4px;">BLE activé</div>
-        <div style="font-size:11px;color:#64748b;">Lecteur en écoute active</div>
-        <div style="font-size:10px;color:#475569;margin-top:4px;font-style:italic;">~30 sec avant</div>
-      </div>
-      <div>
-        <div style="width:52px;height:52px;border-radius:50%;background:rgba(22,163,74,0.2);border:2px solid #16a34a;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 10px;">🔓</div>
-        <div style="font-size:12px;font-weight:600;margin-bottom:4px;">Accès ouvert</div>
-        <div style="font-size:11px;color:#64748b;">Portail s'ouvre à 2m</div>
-        <div style="font-size:10px;color:#475569;margin-top:4px;font-style:italic;">À l'arrivée</div>
-      </div>
-      <div>
-        <div style="width:52px;height:52px;border-radius:50%;background:rgba(217,119,6,0.2);border:2px solid #d97706;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 10px;">⏱️</div>
-        <div style="font-size:12px;font-weight:600;margin-bottom:4px;">Présence confirmée</div>
-        <div style="font-size:11px;color:#64748b;">Pas de fermeture intempestive</div>
-        <div style="font-size:10px;color:#475569;margin-top:4px;font-style:italic;">Dans les 5 min</div>
-      </div>
-      <div>
-        <div style="width:52px;height:52px;border-radius:50%;background:rgba(220,38,38,0.2);border:2px solid #dc2626;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 10px;">🔒</div>
-        <div style="font-size:12px;font-weight:600;margin-bottom:4px;">Fermeture auto</div>
-        <div style="font-size:11px;color:#64748b;">BLE perdu + GPS quitte zone</div>
-        <div style="font-size:10px;color:#475569;margin-top:4px;font-style:italic;">Au départ</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bureau + Config -->
   <div class="detection-bottom" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:1000px; margin:0 auto;">
     <div style="background:rgba(220,38,38,0.06);border:1px solid rgba(220,38,38,0.2);border-radius:16px;padding:24px;">
       <div style="font-size:13px;font-weight:600;color:#f87171;margin-bottom:10px;">⚠️ Problème bureau résolu</div>
       <div style="font-size:13px;color:#94a3b8;line-height:1.7;margin-bottom:12px;">Si l'employé est assis à 1,5m de la porte, le système ne ferme pas la porte en continu.</div>
       <div style="background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.2);border-radius:10px;padding:12px;font-size:12px;color:#4ade80;">
-        ✅ <strong>Mode "Présence prolongée"</strong> — si l'utilisateur est immobile depuis plus de 5 min dans la zone, le système maintient l'accès ouvert jusqu'au départ réel.
+        ✅ <strong>Mode "Présence prolongée"</strong> — si l'utilisateur est immobile depuis plus de 5 min, le système maintient l'accès ouvert jusqu'au départ réel.
       </div>
     </div>
     <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
@@ -383,65 +355,171 @@
   <div class="section-label">Tarifs</div>
   <div class="section-title">Simple et transparent</div>
   <div class="section-sub" style="margin:0 auto">Pas de frais cachés. Résiliable à tout moment.</div>
+
+  <div class="trial-badge">🎁 15 jours d'essai gratuit — sans carte bancaire</div>
+
+  <!-- Toggle mensuel/annuel -->
+  <div class="pricing-toggle">
+    <button class="active" id="btn-mensuel" onclick="setFacturation('mensuel')">Mensuel</button>
+    <button id="btn-annuel" onclick="setFacturation('annuel')">Annuel <span style="color:#16a34a;font-size:11px;">-17%</span></button>
+  </div>
+
   <div class="pricing-grid">
+
+    <!-- STARTER -->
     <div class="pricing-card">
+      <div class="employees-badge">0 — 25 employés</div>
       <h3>Starter</h3>
-      <div class="pricing-price">Gratuit</div>
-      <div class="pricing-desc">Pour tester QBDP</div>
+      <div class="pricing-price" id="price-starter">29€ <span>/ mois</span></div>
+      <div class="pricing-annual" id="annual-starter" style="display:none;">290€ / an — économisez 58€</div>
+      <div class="pricing-desc">Idéal pour démarrer</div>
+      <hr class="pricing-divider">
       <ul class="pricing-features">
-        <li>Jusqu'à 5 employés</li>
-        <li>1 bâtiment</li>
-        <li>Historique 7 jours</li>
+        <li>Jusqu'à 25 employés</li>
+        <li>Clients / patients illimités</li>
+        <li>Accès BLE</li>
+        <li>Dashboard complet</li>
+        <li>Export CSV</li>
+        <li>500 emails / SMS / mois</li>
         <li>Support email</li>
       </ul>
-      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app'">Commencer</button>
+      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app'">Essai gratuit 15 jours</button>
     </div>
+
+    <!-- PRO -->
     <div class="pricing-card popular">
-      <div class="popular-badge">Le plus populaire</div>
-      <h3>Business</h3>
-      <div class="pricing-price">2€ <span>/ employé / mois</span></div>
-      <div class="pricing-desc">Pour les entreprises</div>
+      <div class="popular-badge">⭐ Le plus populaire</div>
+      <div class="employees-badge">0 — 100 employés</div>
+      <h3>Pro</h3>
+      <div class="pricing-price" id="price-pro">79€ <span>/ mois</span></div>
+      <div class="pricing-annual" id="annual-pro" style="display:none;">790€ / an — économisez 158€</div>
+      <div class="pricing-desc">Pour les PME et établissements</div>
+      <hr class="pricing-divider">
       <ul class="pricing-features">
-        <li>Employés illimités</li>
-        <li>Bâtiments illimités</li>
-        <li>Historique illimité</li>
+        <li>Jusqu'à 100 employés</li>
+        <li>Clients / patients illimités</li>
+        <li>Accès BLE</li>
+        <li>✨ White label complet</li>
+        <li>✨ Personnalisation couleurs</li>
+        <li>1 000 emails / SMS / mois</li>
+        <li>Export CSV</li>
         <li>Support prioritaire</li>
-        <li>Extension privée incluse</li>
       </ul>
-      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app'">Démarrer</button>
+      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app'">Essai gratuit 15 jours</button>
     </div>
+
+    <!-- PRO+ -->
     <div class="pricing-card">
+      <div class="employees-badge">0 — 200 employés</div>
+      <h3>Pro+</h3>
+      <div class="pricing-price" id="price-proplus">149€ <span>/ mois</span></div>
+      <div class="pricing-annual" id="annual-proplus" style="display:none;">1 490€ / an — économisez 298€</div>
+      <div class="pricing-desc">Hôpitaux, résidences, hôtels</div>
+      <hr class="pricing-divider">
+      <ul class="pricing-features">
+        <li>Jusqu'à 200 employés</li>
+        <li>Clients / patients illimités</li>
+        <li>Accès BLE</li>
+        <li>White label complet</li>
+        <li>2 500 emails / SMS / mois</li>
+        <li>Export CSV</li>
+        <li>Support prioritaire</li>
+        <li>Onboarding dédié</li>
+      </ul>
+      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app'">Essai gratuit 15 jours</button>
+    </div>
+
+    <!-- BUSINESS -->
+    <div class="pricing-card">
+      <div class="employees-badge">200 — 500 employés</div>
+      <h3>Business</h3>
+      <div class="pricing-price" id="price-business">249€ <span>/ mois</span></div>
+      <div class="pricing-annual" id="annual-business" style="display:none;">2 490€ / an — économisez 498€</div>
+      <div class="pricing-desc">Grands établissements</div>
+      <hr class="pricing-divider">
+      <ul class="pricing-features">
+        <li>Jusqu'à 500 employés</li>
+        <li>Clients / patients illimités</li>
+        <li>Accès BLE</li>
+        <li>White label complet</li>
+        <li>Communications illimitées</li>
+        <li>Export CSV</li>
+        <li>Support dédié</li>
+        <li>SLA 99.9%</li>
+      </ul>
+      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app'">Essai gratuit 15 jours</button>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="pricing-card enterprise">
+      <div class="employees-badge">500+ employés</div>
       <h3>Enterprise</h3>
       <div class="pricing-price">Sur devis</div>
-      <div class="pricing-desc">Pour les grands comptes</div>
+      <div class="pricing-desc">Groupes & multi-sites</div>
+      <hr class="pricing-divider">
       <ul class="pricing-features">
-        <li>Tout Business inclus</li>
-        <li>SSO / LDAP</li>
+        <li>Employés illimités</li>
+        <li>Clients / patients illimités</li>
+        <li>Multi-sites</li>
+        <li>White label complet</li>
+        <li>Communications illimitées</li>
         <li>API REST dédiée</li>
-        <li>SLA garanti 99.9%</li>
+        <li>SSO / LDAP</li>
         <li>Account manager dédié</li>
+        <li>SLA garanti 99.9%</li>
       </ul>
-      <button class="pricing-btn">Nous contacter</button>
+      <button class="pricing-btn" onclick="window.location.href='mailto:contact@qbdp.fr'">Nous contacter</button>
+    </div>
+
+  </div>
+
+  <!-- Note Ma Maison -->
+  <div style="margin-top:40px;padding:20px 28px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:14px;max-width:600px;margin-left:auto;margin-right:auto;text-align:left;display:flex;gap:16px;align-items:center;">
+    <span style="font-size:28px;">🏠</span>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:#1a1a2e;margin-bottom:4px;">Extension Ma Maison — 2€ / mois / utilisateur</div>
+      <div style="font-size:13px;color:#6b7280;">Chaque employé ou client peut étendre l'app à son domicile (portail, garage, domotique). Abonnement personnel indépendant de l'entreprise.</div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta">
-  <h2>Prêt à digitaliser vos badges ?</h2>
-  <p>Rejoignez les entreprises qui ont déjà adopté QBDP.</p>
-  <a href="https://qbdp-admin.vercel.app" class="cta-btn">Démarrer gratuitement →</a>
+  <h2>Prêt à digitaliser vos accès ?</h2>
+  <p>15 jours d'essai gratuit. Aucune carte bancaire requise.</p>
+  <a href="https://qbdp-admin.vercel.app" class="cta-btn">🚀 Démarrer gratuitement →</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
     <img src="assets/logo2.png" alt="QBDP" style="width:120px;height:120px;border-radius:20px" />
-    
   </div>
   <p>© 2026 QBDP — Quality Badge & Digital Protocol</p>
   <p style="font-size:13px;color:#9ca3af">Made with ❤️ in France</p>
 </footer>
+
+<script>
+  const prices = {
+    starter:  { mensuel: '29€',   annuel: '24€' },
+    pro:      { mensuel: '79€',   annuel: '66€' },
+    proplus:  { mensuel: '149€',  annuel: '124€' },
+    business: { mensuel: '249€',  annuel: '207€' },
+  };
+
+  function setFacturation(mode) {
+    document.getElementById('btn-mensuel').classList.toggle('active', mode === 'mensuel');
+    document.getElementById('btn-annuel').classList.toggle('active', mode === 'annuel');
+
+    ['starter','pro','proplus','business'].forEach(plan => {
+      const priceEl  = document.getElementById('price-' + plan);
+      const annualEl = document.getElementById('annual-' + plan);
+      const suffix   = mode === 'mensuel' ? '/ mois' : '/ mois (facturé annuellement)';
+      priceEl.innerHTML = `${prices[plan][mode]} <span>${suffix}</span>`;
+      annualEl.style.display = mode === 'annuel' ? 'block' : 'none';
+    });
+  }
+</script>
 
 </body>
 </html>
