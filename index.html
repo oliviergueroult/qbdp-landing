@@ -10,8 +10,6 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a2e; background: white; }
     a { text-decoration: none; color: inherit; }
-
-    /* NAV */
     nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid #f0f0f0; }
     .nav-logo { display: flex; align-items: center; gap: 10px; }
     .nav-logo img { width: 120px; height: 120px; border-radius: 20px; }
@@ -19,8 +17,6 @@
     .nav-links a:hover { color: #1a56db; }
     .nav-cta { background: #1a56db; color: white; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; }
     .nav-cta:hover { background: #1648c0; }
-
-    /* HERO */
     .hero { padding: 160px 48px 100px; text-align: center; background: linear-gradient(180deg, #f0f5ff 0%, #ffffff 100%); }
     .hero-badge { display: inline-block; background: #eff6ff; color: #1a56db; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 24px; border: 1px solid #bfdbfe; }
     .hero h1 { font-size: 58px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -1px; }
@@ -29,19 +25,14 @@
     .hero-btns { display: flex; gap: 14px; justify-content: center; }
     .btn-primary { background: #1a56db; color: white; padding: 16px 32px; border-radius: 10px; font-size: 16px; font-weight: 600; }
     .btn-primary:hover { background: #1648c0; }
-    .btn-secondary { background: white; color: #1a56db; padding: 16px 32px; border-radius: 10px; font-size: 16px; font-weight: 600; border: 2px solid #bfdbfe; }
     .hero-img { margin-top: 64px; max-width: 900px; margin-left: auto; margin-right: auto; background: white; border-radius: 20px; box-shadow: 0 24px 64px rgba(26,86,219,0.12); overflow: hidden; border: 1px solid #e5e7eb; }
     .hero-mockup { padding: 32px; text-align: left; }
     .mockup-bar { display: flex; gap: 6px; margin-bottom: 20px; }
     .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
-
-    /* LOGOS */
     .logos { padding: 48px; text-align: center; border-top: 1px solid #f3f4f6; border-bottom: 1px solid #f3f4f6; }
     .logos p { font-size: 13px; color: #9ca3af; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.1em; }
     .logos-grid { display: flex; gap: 48px; justify-content: center; align-items: center; flex-wrap: wrap; }
     .logo-item { font-size: 18px; font-weight: 700; color: #d1d5db; }
-
-    /* FEATURES */
     .features { padding: 100px 48px; }
     .section-label { font-size: 13px; font-weight: 600; color: #1a56db; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
     .section-title { font-size: 42px; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px; }
@@ -51,16 +42,12 @@
     .feature-icon { font-size: 32px; margin-bottom: 16px; }
     .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
     .feature-card p { font-size: 14px; color: #6b7280; line-height: 1.6; }
-
-    /* COMMENT CA MARCHE */
     .how { padding: 100px 48px; background: #f9fafb; }
     .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
     .step { text-align: center; padding: 24px; }
     .step-num { width: 48px; height: 48px; background: #1a56db; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; margin: 0 auto 16px; }
     .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
     .step p { font-size: 13px; color: #6b7280; line-height: 1.6; }
-
-    /* PRICING */
     .pricing { padding: 100px 48px; text-align: center; background: #f9fafb; }
     .pricing-toggle { display: inline-flex; background: #e5e7eb; border-radius: 10px; padding: 4px; margin: 24px auto; gap: 4px; }
     .pricing-toggle button { padding: 8px 20px; border-radius: 8px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; background: transparent; color: #6b7280; transition: all .2s; }
@@ -91,18 +78,13 @@
     .pricing-card.enterprise .pricing-btn { background: white; color: #1a1a2e; }
     .employees-badge { display: inline-block; background: #eff6ff; color: #1a56db; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 6px; margin-bottom: 8px; }
     .pricing-card.enterprise .employees-badge { background: rgba(96,165,250,0.2); color: #60a5fa; }
-
-    /* CTA */
     .cta { padding: 100px 48px; background: #1a56db; text-align: center; color: white; }
     .cta h2 { font-size: 42px; font-weight: 800; margin-bottom: 16px; }
     .cta p { font-size: 18px; opacity: 0.85; margin-bottom: 40px; }
     .cta-btn { background: white; color: #1a56db; padding: 16px 40px; border-radius: 10px; font-size: 16px; font-weight: 700; display: inline-block; }
-
-    /* FOOTER */
     footer { padding: 48px; border-top: 1px solid #f3f4f6; display: flex; justify-content: space-between; align-items: center; }
     .footer-logo { display: flex; align-items: center; gap: 10px; }
     footer p { font-size: 13px; color: #9ca3af; }
-
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
@@ -138,7 +120,7 @@
     <a href="#detection">Technologie</a>
     <a href="#tarifs">Tarifs</a>
   </div>
-  <a href="https://qbdp-admin.vercel.app" class="nav-cta">Accéder au dashboard</a>
+  <a href="https://qbdp-admin.vercel.app" class="nav-cta">Se connecter</a>
 </nav>
 
 <!-- HERO -->
@@ -147,8 +129,7 @@
   <h1>Le badge d'accès<br /><span>100% digital</span></h1>
   <p>Remplacez vos badges physiques par une app mobile. Gérez les accès de vos employés, clients et patients en temps réel, depuis n'importe où.</p>
   <div class="hero-btns">
-    <a href="https://qbdp-admin.vercel.app" class="btn-primary">🚀 Essai gratuit 15 jours</a>
-    <a href="#comment" class="btn-secondary">Voir la démo</a>
+    <a href="https://qbdp-admin.vercel.app?register=1" class="btn-primary">🚀 Essai gratuit 15 jours</a>
   </div>
   <div class="hero-img">
     <div class="hero-mockup">
@@ -225,36 +206,12 @@
   <div class="section-title">Tout ce dont vous avez besoin</div>
   <div class="section-sub">Une solution complète pour gérer vos accès, vos équipes et vos clients depuis un seul endroit.</div>
   <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">📱</div>
-      <h3>Badge digital</h3>
-      <p>Chaque employé, client ou patient dispose d'un badge sur son smartphone. Fini les badges perdus ou oubliés.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔐</div>
-      <h3>Contrôle d'accès</h3>
-      <p>Définissez qui peut accéder à quelle zone et à quelle heure. Modifiable en temps réel depuis le dashboard.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📣</div>
-      <h3>Communications</h3>
-      <p>Envoyez des campagnes email et SMS à vos clients et employés. Templates visuels, anniversaires, événements.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🎨</div>
-      <h3>White Label</h3>
-      <p>Personnalisez l'app avec votre logo et vos couleurs. Vos clients voient votre marque, pas QBDP.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🏥</div>
-      <h3>Clients & Patients</h3>
-      <p>Gérez vos clients hôteliers ou patients hospitaliers. Accès temporaires, dates de séjour, numéro de chambre.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🏠</div>
-      <h3>Extension Ma Maison</h3>
-      <p>Les employés peuvent étendre l'app à leur domicile : portail, garage, domotique. À 2€/mois.</p>
-    </div>
+    <div class="feature-card"><div class="feature-icon">📱</div><h3>Badge digital</h3><p>Chaque employé, client ou patient dispose d'un badge sur son smartphone. Fini les badges perdus ou oubliés.</p></div>
+    <div class="feature-card"><div class="feature-icon">🔐</div><h3>Contrôle d'accès</h3><p>Définissez qui peut accéder à quelle zone et à quelle heure. Modifiable en temps réel depuis le dashboard.</p></div>
+    <div class="feature-card"><div class="feature-icon">📣</div><h3>Communications</h3><p>Envoyez des campagnes email et SMS à vos clients et employés. Templates visuels, anniversaires, événements.</p></div>
+    <div class="feature-card"><div class="feature-icon">🎨</div><h3>White Label</h3><p>Personnalisez l'app avec votre logo et vos couleurs. Vos clients voient votre marque, pas QBDP.</p></div>
+    <div class="feature-card"><div class="feature-icon">🏥</div><h3>Clients & Patients</h3><p>Gérez vos clients hôteliers ou patients hospitaliers. Accès temporaires, dates de séjour, numéro de chambre.</p></div>
+    <div class="feature-card"><div class="feature-icon">🏠</div><h3>Extension Ma Maison</h3><p>Les employés peuvent étendre l'app à leur domicile : portail, garage, domotique. À 2€/mois.</p></div>
   </div>
 </section>
 
@@ -266,26 +223,10 @@
     <div class="section-sub" style="margin:0 auto">De la création du compte à la première ouverture de porte.</div>
   </div>
   <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Créez votre compte</h3>
-      <p>Inscrivez-vous sur le dashboard admin et configurez votre établissement en marque blanche.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Ajoutez employés & clients</h3>
-      <p>Importez ou ajoutez manuellement avec leur email. Définissez les accès et plages horaires.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Invitez-les</h3>
-      <p>Un email est envoyé automatiquement. Activation en 1 clic depuis le smartphone.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h3>C'est prêt !</h3>
-      <p>Ouverture des portes via Bluetooth. Vous suivez tout en temps réel depuis le dashboard.</p>
-    </div>
+    <div class="step"><div class="step-num">1</div><h3>Créez votre compte</h3><p>Inscrivez-vous en 2 minutes — essai gratuit 15 jours, sans carte bancaire.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Configurez</h3><p>Le wizard vous guide — logo, couleurs, premier employé, première zone.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Invitez</h3><p>Un email est envoyé automatiquement. Activation en 1 clic depuis le smartphone.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>C'est prêt !</h3><p>Ouverture des portes via Bluetooth. Vous suivez tout en temps réel depuis le dashboard.</p></div>
   </div>
 </section>
 
@@ -333,18 +274,10 @@
     <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
       <div style="font-size:13px;font-weight:600;margin-bottom:16px;">🎛️ Paramètres configurables par accès</div>
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.05);">
-          <span>Distance ouverture BLE</span><span style="color:#60a5fa;font-weight:600;">1,5m par défaut</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.05);">
-          <span>Zone GPS</span><span style="color:#4ade80;font-weight:600;">200m par défaut</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.05);">
-          <span>Délai fermeture</span><span style="color:#60a5fa;font-weight:600;">30 sec</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;">
-          <span>Plages horaires actives</span><span style="color:#fbbf24;font-weight:600;">08h — 20h</span>
-        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.05);"><span>Distance ouverture BLE</span><span style="color:#60a5fa;font-weight:600;">1,5m par défaut</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.05);"><span>Zone GPS</span><span style="color:#4ade80;font-weight:600;">200m par défaut</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.05);"><span>Délai fermeture</span><span style="color:#60a5fa;font-weight:600;">30 sec</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;"><span>Plages horaires actives</span><span style="color:#fbbf24;font-weight:600;">08h — 20h</span></div>
       </div>
     </div>
   </div>
@@ -355,18 +288,12 @@
   <div class="section-label">Tarifs</div>
   <div class="section-title">Simple et transparent</div>
   <div class="section-sub" style="margin:0 auto">Pas de frais cachés. Résiliable à tout moment.</div>
-
   <div class="trial-badge">🎁 15 jours d'essai gratuit — sans carte bancaire</div>
-
-  <!-- Toggle mensuel/annuel -->
   <div class="pricing-toggle">
     <button class="active" id="btn-mensuel" onclick="setFacturation('mensuel')">Mensuel</button>
     <button id="btn-annuel" onclick="setFacturation('annuel')">Annuel <span style="color:#16a34a;font-size:11px;">-17%</span></button>
   </div>
-
   <div class="pricing-grid">
-
-    <!-- STARTER -->
     <div class="pricing-card">
       <div class="employees-badge">0 — 25 employés</div>
       <h3>Starter</h3>
@@ -383,10 +310,8 @@
         <li>500 emails / SMS / mois</li>
         <li>Support email</li>
       </ul>
-      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app'">Essai gratuit 15 jours</button>
+      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app?register=1'">🚀 Essai gratuit 15 jours</button>
     </div>
-
-    <!-- PRO -->
     <div class="pricing-card popular">
       <div class="popular-badge">⭐ Le plus populaire</div>
       <div class="employees-badge">0 — 100 employés</div>
@@ -405,10 +330,8 @@
         <li>Export CSV</li>
         <li>Support prioritaire</li>
       </ul>
-      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app'">Essai gratuit 15 jours</button>
+      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app?register=1'">🚀 Essai gratuit 15 jours</button>
     </div>
-
-    <!-- PRO+ -->
     <div class="pricing-card">
       <div class="employees-badge">0 — 200 employés</div>
       <h3>Pro+</h3>
@@ -426,10 +349,8 @@
         <li>Support prioritaire</li>
         <li>Onboarding dédié</li>
       </ul>
-      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app'">Essai gratuit 15 jours</button>
+      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app?register=1'">🚀 Essai gratuit 15 jours</button>
     </div>
-
-    <!-- BUSINESS -->
     <div class="pricing-card">
       <div class="employees-badge">200 — 500 employés</div>
       <h3>Business</h3>
@@ -447,10 +368,8 @@
         <li>Support dédié</li>
         <li>SLA 99.9%</li>
       </ul>
-      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app'">Essai gratuit 15 jours</button>
+      <button class="pricing-btn" onclick="window.location.href='https://qbdp-admin.vercel.app?register=1'">🚀 Essai gratuit 15 jours</button>
     </div>
-
-    <!-- ENTERPRISE -->
     <div class="pricing-card enterprise">
       <div class="employees-badge">500+ employés</div>
       <h3>Enterprise</h3>
@@ -470,10 +389,7 @@
       </ul>
       <button class="pricing-btn" onclick="window.location.href='mailto:contact@qbdp.fr'">Nous contacter</button>
     </div>
-
   </div>
-
-  <!-- Note Ma Maison -->
   <div style="margin-top:40px;padding:20px 28px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:14px;max-width:600px;margin-left:auto;margin-right:auto;text-align:left;display:flex;gap:16px;align-items:center;">
     <span style="font-size:28px;">🏠</span>
     <div>
@@ -487,7 +403,7 @@
 <section class="cta">
   <h2>Prêt à digitaliser vos accès ?</h2>
   <p>15 jours d'essai gratuit. Aucune carte bancaire requise.</p>
-  <a href="https://qbdp-admin.vercel.app" class="cta-btn">🚀 Démarrer gratuitement →</a>
+  <a href="https://qbdp-admin.vercel.app?register=1" class="cta-btn">🚀 Démarrer gratuitement →</a>
 </section>
 
 <!-- FOOTER -->
@@ -501,16 +417,14 @@
 
 <script>
   const prices = {
-    starter:  { mensuel: '29€',   annuel: '24€' },
-    pro:      { mensuel: '79€',   annuel: '66€' },
-    proplus:  { mensuel: '149€',  annuel: '124€' },
-    business: { mensuel: '249€',  annuel: '207€' },
+    starter:  { mensuel: '29€',  annuel: '24€'  },
+    pro:      { mensuel: '79€',  annuel: '66€'  },
+    proplus:  { mensuel: '149€', annuel: '124€' },
+    business: { mensuel: '249€', annuel: '207€' },
   };
-
   function setFacturation(mode) {
     document.getElementById('btn-mensuel').classList.toggle('active', mode === 'mensuel');
     document.getElementById('btn-annuel').classList.toggle('active', mode === 'annuel');
-
     ['starter','pro','proplus','business'].forEach(plan => {
       const priceEl  = document.getElementById('price-' + plan);
       const annualEl = document.getElementById('annual-' + plan);
@@ -520,6 +434,5 @@
     });
   }
 </script>
-
 </body>
 </html>
