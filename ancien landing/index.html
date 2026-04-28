@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QBDP — Bientôt disponible</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a0e1a;
+      --blue: #1a2744;
+      --accent: #3b82f6;
+      --accent2: #60a5fa;
+      --white: #f0f4ff;
+      --muted: rgba(240,244,255,0.4);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Animated background */
+    .bg {
+      position: fixed; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, #1a2f6a 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 80% 80%, #0f1f4a 0%, transparent 60%),
+                  var(--navy);
+    }
+
+    .bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(59,130,246,0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: gridDrift 20s linear infinite;
+    }
+
+    @keyframes gridDrift {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(40px); }
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float linear infinite;
+    }
+    .orb1 { width: 400px; height: 400px; background: #3b82f6; top: -100px; left: -100px; animation-duration: 25s; }
+    .orb2 { width: 300px; height: 300px; background: #1d4ed8; bottom: -80px; right: -80px; animation-duration: 30s; animation-delay: -10s; }
+    .orb3 { width: 200px; height: 200px; background: #60a5fa; top: 40%; left: 60%; animation-duration: 20s; animation-delay: -5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 15px) scale(0.95); }
+    }
+
+    /* Main layout */
+    .container {
+      position: relative; z-index: 10;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .badge .dot {
+      width: 6px; height: 6px;
+      background: var(--accent2);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* Logo */
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      background: linear-gradient(135deg, #fff 30%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+
+    /* Tagline */
+    .tagline {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.6;
+      margin-bottom: 3.5rem;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    /* Divider */
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 0 auto 3.5rem;
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+
+    /* Notify form */
+    .notify {
+      display: flex;
+      gap: 10px;
+      max-width: 400px;
+      width: 100%;
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+
+    .notify input {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .notify input::placeholder { color: var(--muted); }
+    .notify input:focus { border-color: rgba(59,130,246,0.5); }
+
+    .notify button {
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      padding: 12px 22px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #fff;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .notify button:hover { background: #2563eb; transform: translateY(-1px); }
+    .notify button:active { transform: translateY(0); }
+
+    .thanks {
+      display: none;
+      color: var(--accent2);
+      font-size: 0.9rem;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    /* Footer */
+    .footer {
+      position: fixed;
+      bottom: 2rem;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(240,244,255,0.2);
+      letter-spacing: 0.05em;
+      animation: fadeUp 0.8s ease 0.6s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<div class="container">
+  <div class="badge">
+    <span class="dot"></span>
+    En cours de développement
+  </div>
+
+  <div class="logo">QBDP</div>
+
+  <p class="tagline">Une nouvelle façon de gérer vos badges de présence.<br>Nous arrivons bientôt.</p>
+
+  <div class="divider"></div>
+
+  <div class="notify" id="notifyForm">
+    <input type="email" id="emailInput" placeholder="votre@email.fr" />
+    <button onclick="handleNotify()">Me prévenir</button>
+  </div>
+  <p class="thanks" id="thanks">✓ Nous vous contacterons dès l'ouverture !</p>
+</div>
+
+<div class="footer">© 2026 QBDP — Tous droits réservés</div>
+
+<script>
+  function handleNotify() {
+    const email = document.getElementById('emailInput').value;
+    if (!email || !email.includes('@')) return;
+    document.getElementById('notifyForm').style.display = 'none';
+    const thanks = document.getElementById('thanks');
+    thanks.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
