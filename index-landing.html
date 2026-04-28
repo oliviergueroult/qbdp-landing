@@ -129,30 +129,26 @@
     <a href="https://qbdp-admin.vercel.app?register=1" class="btn-primary">🚀 Essai gratuit 15 jours</a>
   </div>
   <div class="hero-img" style="padding: 0; overflow: hidden;">
-    <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 3px; height: 480px; border-radius: 20px; overflow: hidden; background: white;">
+    <!-- MOSAIQUE PLEINE LARGEUR -->
+    <div style="border-radius: 20px; overflow: hidden; margin-bottom: 12px;">
+      <img src="assets/qbdp-mosaique.png" style="width: 100%; display: block;" />
+    </div>
 
-      <!-- IMAGE FIXE GAUCHE -->
-      <div style="overflow: hidden; display: flex; align-items: center; justify-content: center; background: white;">
-        <img src="assets/qbdp-mosaique.png" style="width: 100%; height: 100%; object-fit: contain; display: block;" />
-      </div>
-
-      <!-- SLIDESHOW DROITE -->
-      <div style="position: relative; overflow: hidden;">
-        <img id="hslide-0" src="assets/qbdp1.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity .8s ease;" />
-        <img id="hslide-1" src="assets/qbdp2.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease;" />
-        <img id="hslide-2" src="assets/qbdp3.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease;" />
-        <img id="hslide-3" src="assets/qbdp4.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease;" />
-        <img id="hslide-4" src="assets/qbdp5.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease;" />
-        <img id="hslide-5" src="assets/qbdp6.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease;" />
-        <!-- Dots -->
-        <div style="position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10;">
-          <div id="hdot-0" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 1; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(0)"></div>
-          <div id="hdot-1" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 0.4; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(1)"></div>
-          <div id="hdot-2" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 0.4; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(2)"></div>
-          <div id="hdot-3" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 0.4; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(3)"></div>
-          <div id="hdot-4" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 0.4; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(4)"></div>
-          <div id="hdot-5" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 0.4; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(5)"></div>
-        </div>
+    <!-- SLIDESHOW EN DESSOUS -->
+    <div style="position: relative; height: 320px; border-radius: 20px; overflow: hidden;">
+      <img id="hslide-0" src="assets/qbdp1.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity .8s ease;" />
+      <img id="hslide-1" src="assets/qbdp2.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease;" />
+      <img id="hslide-2" src="assets/qbdp3.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease;" />
+      <img id="hslide-3" src="assets/qbdp4.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease;" />
+      <img id="hslide-4" src="assets/qbdp5.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease;" />
+      <img id="hslide-5" src="assets/qbdp6.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease;" />
+      <div style="position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10;">
+        <div id="hdot-0" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 1; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(0)"></div>
+        <div id="hdot-1" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 0.4; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(1)"></div>
+        <div id="hdot-2" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 0.4; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(2)"></div>
+        <div id="hdot-3" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 0.4; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(3)"></div>
+        <div id="hdot-4" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 0.4; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(4)"></div>
+        <div id="hdot-5" style="width: 8px; height: 8px; border-radius: 50%; background: white; opacity: 0.4; cursor: pointer; transition: opacity .3s;" onclick="goHSlide(5)"></div>
       </div>
     </div>
     <script>
