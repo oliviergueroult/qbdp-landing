@@ -25,11 +25,11 @@
     .orb3 { width: 200px; height: 200px; background: #60a5fa; top: 40%; left: 60%; animation-duration: 20s; animation-delay: -5s; }
     @keyframes float { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(30px,-20px) scale(1.05); } 66% { transform: translate(-20px,15px) scale(0.95); } }
     .container { position: relative; z-index: 10; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; }
-    .site-logo { width: 180px; height: 180px; border-radius: 22px; margin-bottom: 2rem; animation: fadeUp 0.8s ease both; box-shadow: 0 0 40px rgba(59,130,246,0.25); }
+    .site-logo-wrap { background: #fff; border-radius: 20px; padding: 20px 32px; margin-bottom: 2rem; display: inline-block; animation: fadeUp 0.8s ease both; box-shadow: 0 0 50px rgba(59,130,246,0.30); }
+    .site-logo { width: 260px; height: auto; display: block; }
     .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3); border-radius: 100px; padding: 6px 16px; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); margin-bottom: 2rem; animation: fadeUp 0.8s ease 0.05s both; }
     .badge .dot { width: 6px; height: 6px; background: var(--accent2); border-radius: 50%; animation: pulse 2s ease infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
-    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(3.5rem, 10vw, 7rem); letter-spacing: -0.03em; line-height: 1; background: linear-gradient(135deg, #fff 30%, var(--accent2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.5rem; animation: fadeUp 0.8s ease 0.1s both; }
     .tagline { font-size: clamp(1rem, 2.5vw, 1.25rem); font-weight: 300; color: var(--muted); max-width: 440px; line-height: 1.6; margin-bottom: 3.5rem; animation: fadeUp 0.8s ease 0.2s both; }
     .divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 0 auto 3.5rem; animation: fadeUp 0.8s ease 0.3s both; }
     .notify { display: flex; gap: 10px; max-width: 400px; width: 100%; animation: fadeUp 0.8s ease 0.4s both; }
@@ -53,14 +53,14 @@
 
 <div class="container">
 
-  <img src="assets/logo2.png" alt="QBDP" class="site-logo" />
+  <div class="site-logo-wrap">
+    <img src="assets/logo-full.png" alt="QBDP" class="site-logo" />
+  </div>
 
   <div class="badge">
     <span class="dot"></span>
     En cours de développement
   </div>
-
-  <div class="logo">QBDP</div>
 
   <p class="tagline">Une nouvelle façon de gérer vos badges<br>d'accès et de présence.<br>Nous arrivons bientôt.</p>
 
