@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png?v=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique — QBDP</title>
+  <link rel="apple-touch-icon" href="assets/logo-full.png" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a2e; background: white; }
+    a { text-decoration: none; color: inherit; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid #f0f0f0; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo img { width: 180px; height: 70px; object-fit: contain; }
+    .nav-links { display: flex; gap: 32px; font-size: 14px; color: #6b7280; }
+    .nav-links a:hover { color: #1a56db; }
+    .nav-cta { background: #1a56db; color: white; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+    .nav-cta:hover { background: #1648c0; }
+
+    .page-hero { padding: 140px 48px 60px; text-align: center; background: linear-gradient(180deg, #f0f5ff 0%, #ffffff 100%); }
+    .page-hero .hero-badge { display: inline-block; background: #eff6ff; color: #1a56db; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 24px; border: 1px solid #bfdbfe; }
+    .page-hero h1 { font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px; }
+    .page-hero h1 span { color: #1a56db; }
+    .page-hero p { font-size: 18px; color: #6b7280; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+    .info-bar { background: #eff6ff; border-top: 1px solid #bfdbfe; border-bottom: 1px solid #bfdbfe; padding: 14px 48px; text-align: center; font-size: 14px; color: #1a56db; }
+    .info-bar strong { font-weight: 700; }
+
+    .products { padding: 64px 48px; max-width: 1100px; margin: 0 auto; }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    .product-card { background: white; border-radius: 16px; border: 1px solid #e5e7eb; padding: 28px; display: flex; flex-direction: column; transition: box-shadow .2s; }
+    .product-card:hover { box-shadow: 0 8px 32px rgba(26,86,219,0.10); }
+    .product-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 18px; }
+    .product-card .badge-new { display: inline-block; background: #1a56db; color: white; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 6px; margin-left: 8px; vertical-align: middle; }
+    .product-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .product-card p { font-size: 14px; color: #6b7280; line-height: 1.6; flex: 1; margin-bottom: 24px; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #f3f4f6; padding-top: 18px; margin-top: auto; }
+    .product-price { font-size: 15px; font-weight: 600; color: #374151; }
+    .btn-commander { background: #1a56db; color: white; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; border: none; }
+    .btn-commander:hover { background: #1648c0; }
+
+    .devis-section { text-align: center; padding: 0 48px 80px; }
+    .devis-box { max-width: 600px; margin: 0 auto; background: #f9fafb; border-radius: 16px; border: 1px solid #e5e7eb; padding: 40px; }
+    .devis-box h2 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+    .devis-box p { font-size: 15px; color: #6b7280; margin-bottom: 24px; line-height: 1.6; }
+    .btn-devis { display: inline-flex; align-items: center; gap: 8px; border: 2px solid #1a56db; color: #1a56db; padding: 13px 28px; border-radius: 10px; font-size: 14px; font-weight: 600; }
+    .btn-devis:hover { background: #eff6ff; }
+
+    footer { padding: 40px 48px; border-top: 1px solid #f3f4f6; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    footer p { font-size: 13px; color: #9ca3af; }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 110px 20px 48px; }
+      .page-hero h1 { font-size: 32px; }
+      .info-bar { padding: 14px 20px; }
+      .products { padding: 40px 20px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .devis-section { padding: 0 20px 60px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="assets/logo-full.png" alt="QBDP" />
+  </div>
+  <div class="nav-links">
+    <a href="/">Accueil</a>
+    <a href="/#fonctionnalites">Fonctionnalités</a>
+    <a href="/#tarifs">Tarifs</a>
+    <a href="/boutique" style="color: #1a56db; font-weight: 600;">Boutique</a>
+  </div>
+  <a href="https://qbdp-admin.vercel.app" class="nav-cta">Se connecter</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-badge">🛍️ Accessoires QBDP</div>
+  <h1>La <span>domotique</span><br />à portée de main</h1>
+  <p>Contrôlez votre logement depuis l'app QBDP. Serrures, ampoules, prises et bien plus — compatibles avec votre installation existante.</p>
+</section>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <strong>Commande et paiement sécurisé</strong> — Livraison en France métropolitaine. Prix TTC.
+</div>
+
+<!-- PRODUCTS -->
+<section class="products">
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-icon" style="background: #eff6ff;">📡</div>
+      <h3>Hub QBDP <span class="badge-new">Nouveau</span></h3>
+      <p>Boîtier local compatible Somfy TaHoma, Home Assistant et 3 000+ appareils. Le cerveau de votre maison connectée.</p>
+      <div class="product-footer">
+        <span class="product-price">Prix sur demande</span>
+        <a href="mailto:contact@qbdp.fr?subject=Commander Hub QBDP" class="btn-commander">Commander →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon" style="background: #f5f3ff;">🚪</div>
+      <h3>Poignée connectée</h3>
+      <p>Poignée de porte intelligente. Contrôle par app, badge NFC ou code. Compatible avec votre porte existante.</p>
+      <div class="product-footer">
+        <span class="product-price">Prix sur demande</span>
+        <a href="mailto:contact@qbdp.fr?subject=Commander Poignée connectée" class="btn-commander">Commander →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon" style="background: #f0fdfa;">🔑</div>
+      <h3>Cylindre connecté</h3>
+      <p>Remplace votre cylindre existant en 5 minutes, sans serrurier. Pilotez vos accès depuis l'app.</p>
+      <div class="product-footer">
+        <span class="product-price">Prix sur demande</span>
+        <a href="mailto:contact@qbdp.fr?subject=Commander Cylindre connecté" class="btn-commander">Commander →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon" style="background: #fffbeb;">💡</div>
+      <h3>Ampoule connectée</h3>
+      <p>Ampoule E27 Wi-Fi. Compatible avec l'ensemble des systèmes domotiques. Contrôle par app ou voix.</p>
+      <div class="product-footer">
+        <span class="product-price">Prix sur demande</span>
+        <a href="mailto:contact@qbdp.fr?subject=Commander Ampoule connectée" class="btn-commander">Commander →</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-icon" style="background: #f0fdf4;">⚡</div>
+      <h3>Prise connectée</h3>
+      <p>Prise Wi-Fi avec mesure de consommation en temps réel. Pilotable depuis l'app QBDP.</p>
+      <div class="product-footer">
+        <span class="product-price">Prix sur demande</span>
+        <a href="mailto:contact@qbdp.fr?subject=Commander Prise connectée" class="btn-commander">Commander →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DEVIS -->
+<div class="devis-section">
+  <div class="devis-box">
+    <h2>Vous êtes une entreprise ?</h2>
+    <p>Tarifs dégressifs à partir de 10 unités. Nous établissons un devis personnalisé selon vos besoins et votre parc immobilier.</p>
+    <a href="mailto:contact@qbdp.fr?subject=Demande de devis entreprise QBDP" class="btn-devis">
+      📄 Demander un devis
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="assets/logo-full.png" alt="QBDP" style="height: 40px; object-fit: contain;" />
+  </div>
+  <p>© 2025 QBDP — Quality Badge & Digital Protocol</p>
+  <p><a href="mailto:contact@qbdp.fr" style="color: #6b7280;">contact@qbdp.fr</a></p>
+</footer>
+
+</body>
+</html>
