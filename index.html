@@ -120,7 +120,6 @@
       .detection-bottom { grid-template-columns: 1fr !important; }
     }
   </style>
-  <script src="https://unpkg.com/lucide@0.438.0/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -633,6 +632,7 @@ function showSecteur(id) {
     });
   }
 </script>
-<script>lucide.createIcons();</script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>
