@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png?v=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abonnement confirmé — QBDP</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a2e; background: #f0f5ff; min-height: 100vh; display: flex; flex-direction: column; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #f0f0f0; }
+    .nav-logo img { width: 180px; height: 70px; object-fit: contain; }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
+    .card { background: white; border-radius: 24px; padding: 56px 48px; max-width: 520px; width: 100%; text-align: center; box-shadow: 0 24px 64px rgba(26,86,219,0.10); }
+    .check { width: 72px; height: 72px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; }
+    .check svg { width: 36px; height: 36px; color: #16a34a; }
+    h1 { font-size: 28px; font-weight: 800; margin-bottom: 12px; color: #1a1a2e; }
+    .subtitle { font-size: 16px; color: #6b7280; margin-bottom: 36px; line-height: 1.6; }
+    .divider { border: none; border-top: 1px solid #f3f4f6; margin: 32px 0; }
+    .steps-title { font-size: 13px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+    .steps { display: flex; flex-direction: column; gap: 16px; text-align: left; margin-bottom: 32px; }
+    .step { display: flex; align-items: flex-start; gap: 14px; }
+    .step-num { width: 28px; height: 28px; background: #eff6ff; color: #1a56db; font-size: 13px; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .step-text strong { display: block; font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 2px; }
+    .step-text span { font-size: 13px; color: #6b7280; }
+    .store-btns { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .store-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: #1a1a2e; color: white; padding: 14px 24px; border-radius: 12px; font-size: 15px; font-weight: 600; text-decoration: none; opacity: 0.45; cursor: not-allowed; position: relative; }
+    .soon-badge { position: absolute; right: 16px; background: #f59e0b; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .store-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .back { font-size: 13px; color: #9ca3af; }
+    .back a { color: #1a56db; font-weight: 600; text-decoration: none; }
+    .back a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .card { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo"><img src="assets/logo-full.png" alt="QBDP" /></a>
+  </nav>
+  <main>
+    <div class="card">
+      <div class="check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h1>Abonnement confirmé !</h1>
+      <p class="subtitle">Merci pour votre confiance.<br>Vous allez recevoir une confirmation par email.</p>
+
+      <hr class="divider">
+
+      <p class="steps-title">Prochaines étapes</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Vérifiez votre email</strong>
+            <span>Un reçu Stripe vous a été envoyé avec les détails de votre abonnement.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Téléchargez l'application QBDP</strong>
+            <span>Disponible prochainement sur App Store et Google Play.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Connectez votre domicile</strong>
+            <span>Volet, portail, serrure, éclairage — tout dans une seule app.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="store-btns">
+        <a class="store-btn" href="#" onclick="return false;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+          <span class="soon-badge">Bientôt</span>
+        </a>
+        <a class="store-btn" href="#" onclick="return false;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.65.19.98.06l12.76-6.53-2.76-2.76-10.98 9.23zM.49 1.1C.18 1.46 0 2 0 2.67v18.67c0 .67.18 1.2.49 1.56l.08.08 10.46-10.46v-.25L.57 1.02.49 1.1zM20.29 10.17l-2.65-1.52-3.12 3.12 3.12 3.13 2.67-1.53c.76-.44.76-1.15-.02-1.2zM3.18.24L15.94 6.77l-2.76 2.76L3.18.31z"/></svg>
+          Google Play
+          <span class="soon-badge">Bientôt</span>
+        </a>
+      </div>
+
+      <p class="back">Retour à <a href="/">qbdp.fr</a></p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>if(window.lucide) lucide.createIcons();</script>
+</body>
+</html>
