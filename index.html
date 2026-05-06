@@ -46,7 +46,7 @@
     .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
     .step p { font-size: 13px; color: #6b7280; line-height: 1.6; }
     .pricing { padding: 100px 48px; text-align: center; background: #f9fafb; }
-    .pricing-toggle { display: inline-flex; background: #e5e7eb; border-radius: 10px; padding: 4px; margin: 24px auto; gap: 4px; }
+    .pricing-toggle { display: inline-flex; background: #e5e7eb; border-radius: 10px; padding: 4px; margin: 0; gap: 4px; }
     .pricing-toggle button { padding: 8px 20px; border-radius: 8px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; background: transparent; color: #6b7280; transition: all .2s; }
     .pricing-toggle button.active { background: white; color: #1a1a2e; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
     .trial-badge { display: inline-block; background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 20px; margin-bottom: 32px; }
@@ -454,18 +454,18 @@ function showSecteur(id) {
   </div>
 
   <!-- PROFESSIONNELS -->
-  <div style="margin:40px auto 10px;max-width:1200px;text-align:left;">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
-      <span style="font-size:18px;"><i data-lucide="building-2" style="width:20px;height:20px;vertical-align:middle;"></i></span>
+  <div style="margin:40px auto 16px;max-width:1200px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <i data-lucide="building-2" style="width:20px;height:20px;color:#1a56db;flex-shrink:0;"></i>
       <div>
         <div style="font-size:13px;font-weight:800;color:#1a56db;letter-spacing:0.8px;text-transform:uppercase;">Professionnels</div>
         <div style="font-size:12px;color:#6b7280;margin-top:1px;">Établissements, PME, hôpitaux, résidences</div>
       </div>
     </div>
-  </div>
-  <div class="pricing-toggle">
-    <button class="active" id="btn-mensuel" onclick="setFacturation('mensuel')">Mensuel</button>
-    <button id="btn-annuel" onclick="setFacturation('annuel')">Annuel <span style="color:#16a34a;font-size:11px;">-17%</span></button>
+    <div class="pricing-toggle" style="margin:0;">
+      <button class="active" id="btn-mensuel" onclick="setFacturation('mensuel')">Mensuel</button>
+      <button id="btn-annuel" onclick="setFacturation('annuel')">Annuel <span style="color:#16a34a;font-size:11px;">-17%</span></button>
+    </div>
   </div>
   <div class="pricing-grid">
     <div class="pricing-card">
