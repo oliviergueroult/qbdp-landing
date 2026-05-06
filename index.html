@@ -454,17 +454,19 @@ function showSecteur(id) {
   </div>
 
   <!-- PROFESSIONNELS -->
-  <div style="margin:40px auto 16px;max-width:1200px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-    <div style="display:flex;align-items:center;gap:10px;">
-      <i data-lucide="building-2" style="width:20px;height:20px;color:#1a56db;flex-shrink:0;"></i>
-      <div>
-        <div style="font-size:13px;font-weight:800;color:#1a56db;letter-spacing:0.8px;text-transform:uppercase;">Professionnels</div>
-        <div style="font-size:12px;color:#6b7280;margin-top:1px;">Établissements, PME, hôpitaux, résidences</div>
+  <div style="margin:40px auto 16px;max-width:1200px;text-align:left;">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <i data-lucide="building-2" style="width:20px;height:20px;color:#1a56db;flex-shrink:0;"></i>
+        <div>
+          <div style="font-size:13px;font-weight:800;color:#1a56db;letter-spacing:0.8px;text-transform:uppercase;">Professionnels</div>
+          <div style="font-size:12px;color:#6b7280;margin-top:1px;">Établissements, PME, hôpitaux, résidences</div>
+        </div>
       </div>
-    </div>
-    <div class="pricing-toggle" style="margin:0;">
-      <button class="active" id="btn-mensuel" onclick="setFacturation('mensuel')">Mensuel</button>
-      <button id="btn-annuel" onclick="setFacturation('annuel')">Annuel <span style="color:#16a34a;font-size:11px;">-17%</span></button>
+      <div class="pricing-toggle">
+        <button class="active" id="btn-mensuel" onclick="setFacturation('mensuel')">Mensuel</button>
+        <button id="btn-annuel" onclick="setFacturation('annuel')">Annuel <span style="color:#16a34a;font-size:11px;">-17%</span></button>
+      </div>
     </div>
   </div>
   <div class="pricing-grid">
