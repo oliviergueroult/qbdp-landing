@@ -2,6 +2,8 @@
   "rewrites": [
     { "source": "/boutique", "destination": "/boutique.html" },
     { "source": "/fonctionnalites", "destination": "/fonctionnalites.html" },
+    { "source": "/logiciel-web", "destination": "/logiciel-web.html" },
+    { "source": "/application", "destination": "/application.html" },
     { "source": "/merci", "destination": "/merci.html" }
   ]
 }
