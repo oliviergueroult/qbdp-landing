@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png?v=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application mobile — QBDP</title>
+  <meta name="description" content="L'application mobile QBDP — ouvrez vos accès, gérez votre domotique, recevez vos notifications. Disponible iOS et Android." />
+  <link rel="apple-touch-icon" href="assets/logo-full.png" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a2e; background: white; }
+    a { text-decoration: none; color: inherit; }
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid #f0f0f0; }
+    .nav-logo img { width: 180px; height: 70px; object-fit: contain; }
+    .nav-links { display: flex; gap: 32px; font-size: 14px; color: #6b7280; }
+    .nav-links a:hover { color: #1a56db; }
+    .nav-cta { background: #1a56db; color: white; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+    .nav-cta:hover { background: #1648c0; }
+
+    /* HERO */
+    .hero { padding: 130px 48px 100px; text-align: center; background: linear-gradient(180deg, #f0f5ff 0%, #ffffff 100%); }
+    .badge { display: inline-flex; align-items: center; gap: 6px; background: #eff6ff; color: #1a56db; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; margin-bottom: 24px; border: 1px solid #bfdbfe; }
+    .hero h1 { font-size: 52px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
+    .hero h1 span { color: #1a56db; }
+    .hero p { font-size: 19px; color: #6b7280; max-width: 620px; margin: 0 auto 40px; line-height: 1.65; }
+    .btn-primary { background: #1a56db; color: white; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { background: #1648c0; }
+    .btn-secondary { background: white; color: #1a1a2e; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; border: 1.5px solid #e5e7eb; display: inline-flex; align-items: center; gap: 8px; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 70px; }
+
+    /* STORE BADGES */
+    .store-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .store-btn { display: inline-flex; align-items: center; gap: 10px; background: #1a1a2e; color: white; padding: 11px 20px; border-radius: 10px; font-size: 13px; }
+    .store-btn span { display: flex; flex-direction: column; }
+    .store-btn .sub { font-size: 10px; opacity: 0.65; }
+    .store-btn .name { font-size: 14px; font-weight: 700; }
+
+    /* HERO PHONES */
+    .hero-phones { display: flex; justify-content: center; align-items: flex-end; gap: 24px; margin-top: 60px; flex-wrap: wrap; }
+    .phone-wrap { position: relative; }
+    .phone-wrap.main { transform: scale(1.08); }
+    .phone-frame { width: 240px; border-radius: 40px; border: 8px solid #1a1a2e; box-shadow: 0 40px 80px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.06); overflow: hidden; background: #111; }
+    .phone-frame img { width: 100%; display: block; }
+    .phone-label { text-align: center; margin-top: 16px; font-size: 12px; font-weight: 600; color: #6b7280; }
+
+    /* SECTION */
+    .section { padding: 100px 48px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .section-inner.reverse { direction: rtl; }
+    .section-inner.reverse > * { direction: ltr; }
+    .section-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 5px 13px; border-radius: 20px; margin-bottom: 20px; }
+    .section h2 { font-size: 36px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 16px; line-height: 1.2; }
+    .section p.lead { font-size: 16px; color: #6b7280; line-height: 1.7; margin-bottom: 28px; }
+    .feat-list { display: flex; flex-direction: column; gap: 14px; }
+    .feat-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #374151; line-height: 1.5; list-style: none; }
+    .check { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+    /* PHONES SIDE BY SIDE */
+    .phones-duo { display: flex; gap: 20px; justify-content: center; align-items: flex-start; }
+    .phones-duo .phone-frame { width: 200px; }
+
+    /* PHONE CENTERED */
+    .phone-centered { display: flex; justify-content: center; }
+    .phone-centered .phone-frame { width: 260px; }
+
+    /* STATS BAND */
+    .stats-band { background: #1a56db; padding: 56px 48px; }
+    .stats-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; text-align: center; }
+    .stat-val { font-size: 38px; font-weight: 800; color: white; }
+    .stat-label { font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 4px; }
+
+    /* CARDS */
+    .cards-section { padding: 100px 48px; background: #f9fafb; }
+    .cards-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1200px; margin: 40px auto 0; }
+    .card { background: white; border: 1px solid #e5e7eb; border-radius: 16px; padding: 28px; }
+    .card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .card p { font-size: 13px; color: #6b7280; line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg,#1a56db 0%,#1648c0 100%); padding: 100px 48px; text-align: center; }
+    .cta-section h2 { font-size: 42px; font-weight: 800; color: white; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .cta-section p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 40px; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+
+    footer { padding: 40px 48px; border-top: 1px solid #f3f4f6; display: flex; justify-content: space-between; align-items: center; }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 110px 20px 60px; }
+      .hero h1 { font-size: 34px; }
+      .hero-phones { gap: 12px; }
+      .phone-frame { width: 180px !important; }
+      .section { padding: 60px 20px; }
+      .section-inner { grid-template-columns: 1fr; gap: 40px; }
+      .section-inner.reverse { direction: ltr; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      .cards-grid { grid-template-columns: 1fr; }
+      .cards-section, .cta-section { padding: 60px 20px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><a href="/"><img src="assets/logo-full.png" alt="QBDP" /></a></div>
+  <div class="nav-links">
+    <a href="/">Accueil</a>
+    <a href="/logiciel-web">Logiciel web</a>
+    <a href="/application" style="color:#1a56db;font-weight:700;">Application</a>
+    <a href="/#tarifs">Tarifs</a>
+    <a href="/boutique">Boutique</a>
+  </div>
+  <a href="https://qbdp-admin.vercel.app?register=1" class="nav-cta">Essai gratuit 15 jours</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge"><i data-lucide="smartphone" style="width:13px;height:13px;"></i> Application mobile QBDP</div>
+  <h1>Votre clé numérique,<br/><span>toujours dans votre poche</span></h1>
+  <p>Ouvrez vos accès, pilotez votre domotique, recevez vos notifications — tout depuis une seule app. Pour vos employés comme pour vos clients.</p>
+  <div class="hero-btns">
+    <a href="https://apps.apple.com/app/qbdp" class="btn-primary"><i data-lucide="smartphone" style="width:15px;height:15px;"></i> Télécharger sur iOS</a>
+    <a href="https://play.google.com/store/apps/details?id=com.qbdp" class="btn-secondary"><i data-lucide="smartphone" style="width:15px;height:15px;"></i> Télécharger sur Android</a>
+  </div>
+
+  <div class="hero-phones">
+    <div class="phone-wrap">
+      <div class="phone-frame">
+        <img src="assets/screens/Mobile/Page%206%20Accueil%20employ%C3%A9.png" alt="App QBDP — accueil employé" />
+      </div>
+      <div class="phone-label">Vue Employé</div>
+    </div>
+    <div class="phone-wrap main">
+      <div class="phone-frame">
+        <img src="assets/screens/Mobile/Page%201%20Accueil%20cclient.png" alt="App QBDP — accueil client" />
+      </div>
+      <div class="phone-label">Vue Client</div>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-frame">
+        <img src="assets/screens/Mobile/Page%203%20domotique%20abonn%C3%A9%20inchang%C3%A9.png" alt="App QBDP — domotique" />
+      </div>
+      <div class="phone-label">Domotique</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-val">iOS & Android</div>
+      <div class="stat-label">Application native multi-plateforme</div>
+    </div>
+    <div>
+      <div class="stat-val">BLE + NFC</div>
+      <div class="stat-label">Ouverture sans contact, sans internet</div>
+    </div>
+    <div>
+      <div class="stat-val">3 000+</div>
+      <div class="stat-label">Appareils domotiques compatibles</div>
+    </div>
+    <div>
+      <div class="stat-val">100%</div>
+      <div class="stat-label">Personnalisable aux couleurs de votre établissement</div>
+    </div>
+  </div>
+</div>
+
+<!-- 1. CLIENT — ACCUEIL -->
+<div style="background:#f9fafb;">
+  <div class="section">
+    <div class="section-inner">
+      <div>
+        <div class="section-tag" style="background:#eff6ff;color:#1a56db;border:1px solid #bfdbfe;">
+          <i data-lucide="user-check" style="width:13px;height:13px;"></i> Expérience client
+        </div>
+        <h2>Votre client arrive — tout est déjà prêt</h2>
+        <p class="lead">La veille de son arrivée, votre client reçoit un email avec son accès mobile. Il installe l'app, crée son compte et le jour J, sa chambre et les espaces communs sont déverrouillés automatiquement à l'heure de check-in.</p>
+        <ul class="feat-list">
+          <li><div class="check" style="background:#eff6ff;"><i data-lucide="check" style="width:12px;height:12px;color:#1a56db;"></i></div> Accueil personnalisé avec le logo et les couleurs de votre établissement</li>
+          <li><div class="check" style="background:#eff6ff;"><i data-lucide="check" style="width:12px;height:12px;color:#1a56db;"></i></div> Message de bienvenue personnalisé dès la connexion</li>
+          <li><div class="check" style="background:#eff6ff;"><i data-lucide="check" style="width:12px;height:12px;color:#1a56db;"></i></div> Dates de séjour et numéro de chambre visibles en un coup d'œil</li>
+          <li><div class="check" style="background:#eff6ff;"><i data-lucide="check" style="width:12px;height:12px;color:#1a56db;"></i></div> Accès révoqué automatiquement au check-out — zéro action requise</li>
+        </ul>
+      </div>
+      <div class="phones-duo">
+        <div class="phone-frame">
+          <img src="assets/screens/Mobile/Page%201%20Accueil%20cclient.png" alt="Accueil client QBDP" />
+        </div>
+        <div class="phone-frame">
+          <img src="assets/screens/Mobile/Page%205%20Profil%20Etablissement%20client.png" alt="Profil client QBDP" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. CLIENT — ACCÈS -->
+<div style="background:white;">
+  <div class="section">
+    <div class="section-inner reverse">
+      <div>
+        <div class="section-tag" style="background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;">
+          <i data-lucide="key" style="width:13px;height:13px;"></i> Ouverture des accès
+        </div>
+        <h2>Un tap pour ouvrir. Sans badge, sans clé physique</h2>
+        <p class="lead">Le client ouvre sa chambre, le parking ou la salle de sport directement depuis l'app. Bluetooth, NFC ou tap — l'ouverture est instantanée. En approche, la porte peut même s'ouvrir automatiquement.</p>
+        <ul class="feat-list">
+          <li><div class="check" style="background:#f0fdf4;"><i data-lucide="check" style="width:12px;height:12px;color:#16a34a;"></i></div> Ouverture Bluetooth à moins de 5 mètres</li>
+          <li><div class="check" style="background:#f0fdf4;"><i data-lucide="check" style="width:12px;height:12px;color:#16a34a;"></i></div> Compatible NFC — badge numérique collé au lecteur existant</li>
+          <li><div class="check" style="background:#f0fdf4;"><i data-lucide="check" style="width:12px;height:12px;color:#16a34a;"></i></div> Liste de tous les accès disponibles selon le forfait client</li>
+          <li><div class="check" style="background:#f0fdf4;"><i data-lucide="check" style="width:12px;height:12px;color:#16a34a;"></i></div> Aucun badge à fabriquer, aucun à récupérer au départ</li>
+        </ul>
+      </div>
+      <div class="phone-centered">
+        <div class="phone-frame">
+          <img src="assets/screens/Mobile/Page%202%20Accc%C3%A8s%20Client.png" alt="Accès client QBDP" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. EMPLOYÉ — ACCUEIL -->
+<div style="background:#f9fafb;">
+  <div class="section">
+    <div class="section-inner">
+      <div>
+        <div class="section-tag" style="background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;">
+          <i data-lucide="users" style="width:13px;height:13px;"></i> Expérience employé
+        </div>
+        <h2>Votre équipe accède en toute sécurité, en toute simplicité</h2>
+        <p class="lead">Chaque employé dispose de son propre badge numérique sur son smartphone. Il voit ses accès autorisés, les ouvre d'un tap et reçoit toutes les notifications de l'établissement directement sur l'app.</p>
+        <ul class="feat-list">
+          <li><div class="check" style="background:#f5f3ff;"><i data-lucide="check" style="width:12px;height:12px;color:#7c3aed;"></i></div> Accès personnalisés par profil et horaires de travail</li>
+          <li><div class="check" style="background:#f5f3ff;"><i data-lucide="check" style="width:12px;height:12px;color:#7c3aed;"></i></div> Nom, service et matricule affichés dans l'app</li>
+          <li><div class="check" style="background:#f5f3ff;"><i data-lucide="check" style="width:12px;height:12px;color:#7c3aed;"></i></div> Réception des notifications et alertes de l'établissement</li>
+          <li><div class="check" style="background:#f5f3ff;"><i data-lucide="check" style="width:12px;height:12px;color:#7c3aed;"></i></div> Accès révoqué instantanément depuis le logiciel web en cas de départ</li>
+        </ul>
+      </div>
+      <div class="phones-duo">
+        <div class="phone-frame">
+          <img src="assets/screens/Mobile/Page%206%20Accueil%20employ%C3%A9.png" alt="Accueil employé QBDP" />
+        </div>
+        <div class="phone-frame">
+          <img src="assets/screens/Mobile/Page%209%20Profil%20employ%C3%A9.png" alt="Profil employé QBDP" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. EMPLOYÉ — ACCÈS -->
+<div style="background:white;">
+  <div class="section">
+    <div class="section-inner reverse">
+      <div>
+        <div class="section-tag" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa;">
+          <i data-lucide="shield-check" style="width:13px;height:13px;"></i> Badge numérique employé
+        </div>
+        <h2>Tous les accès de l'employé, dans une seule app</h2>
+        <p class="lead">Entrée principale, parking, salle technique, ascenseurs de service — l'employé voit en un coup d'œil toutes les zones auxquelles il a accès et les ouvre immédiatement sans sortir son téléphone de sa poche.</p>
+        <ul class="feat-list">
+          <li><div class="check" style="background:#fff7ed;"><i data-lucide="check" style="width:12px;height:12px;color:#ea580c;"></i></div> Liste claire de toutes les zones autorisées</li>
+          <li><div class="check" style="background:#fff7ed;"><i data-lucide="check" style="width:12px;height:12px;color:#ea580c;"></i></div> Ouverture Bluetooth automatique en approche</li>
+          <li><div class="check" style="background:#fff7ed;"><i data-lucide="check" style="width:12px;height:12px;color:#ea580c;"></i></div> Alerte si tentative d'accès refusée — tracé dans l'historique</li>
+          <li><div class="check" style="background:#fff7ed;"><i data-lucide="check" style="width:12px;height:12px;color:#ea580c;"></i></div> Fonctionne sans Wi-Fi grâce au Bluetooth local</li>
+        </ul>
+      </div>
+      <div class="phone-centered">
+        <div class="phone-frame">
+          <img src="assets/screens/Mobile/Page%207%20Accc%C3%A8s%20employ%C3%A9.png" alt="Accès employé QBDP" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. DOMOTIQUE -->
+<div style="background:#f0f5ff;">
+  <div class="section">
+    <div class="section-inner">
+      <div>
+        <div class="section-tag" style="background:#eff6ff;color:#1a56db;border:1px solid #bfdbfe;">
+          <i data-lucide="home" style="width:13px;height:13px;"></i> Domotique connectée
+        </div>
+        <h2>Volets, lumières, serrures — tout dans la même app</h2>
+        <p class="lead">Pour vos abonnés particuliers ou vos résidents, QBDP intègre la domotique complète. Compatible avec Somfy TaHoma, Home Assistant, Nuki, Shelly, Tuya et plus de 3 000 appareils — sans changer votre installation.</p>
+        <ul class="feat-list">
+          <li><div class="check" style="background:#eff6ff;"><i data-lucide="check" style="width:12px;height:12px;color:#1a56db;"></i></div> Volets, lumières, prises, thermostats — tout contrôlable</li>
+          <li><div class="check" style="background:#eff6ff;"><i data-lucide="check" style="width:12px;height:12px;color:#1a56db;"></i></div> Compatible Somfy TaHoma, Home Assistant, Nuki, Shelly, Tuya, KNX</div></li>
+          <li><div class="check" style="background:#eff6ff;"><i data-lucide="check" style="width:12px;height:12px;color:#1a56db;"></i></div> Scènes automatisées (réveil, départ, retour à la maison…)</li>
+          <li><div class="check" style="background:#eff6ff;"><i data-lucide="check" style="width:12px;height:12px;color:#1a56db;"></i></div> Intégration avec le Hub QBDP local pour fonctionner sans cloud</li>
+        </ul>
+      </div>
+      <div class="phone-centered">
+        <div class="phone-frame" style="width:260px;">
+          <img src="assets/screens/Mobile/Page%203%20domotique%20abonn%C3%A9%20inchang%C3%A9.png" alt="Domotique QBDP" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARDS RÉCAP -->
+<section class="cards-section">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;">
+      <div style="font-size:13px;font-weight:600;color:#1a56db;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;">Tout ce que fait l'application</div>
+      <h2 style="font-size:38px;font-weight:800;letter-spacing:-0.5px;">Une app, trois usages</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon" style="background:#eff6ff;"><i data-lucide="bluetooth" style="width:20px;height:20px;color:#1a56db;"></i></div>
+        <h3>Ouverture Bluetooth</h3>
+        <p>Portes, portails, barrières — ouverture sans contact jusqu'à 5 m. Automatique en approche, aucun geste requis.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#f0fdf4;"><i data-lucide="wifi-off" style="width:20px;height:20px;color:#16a34a;"></i></div>
+        <h3>Fonctionne hors ligne</h3>
+        <p>Le badge BLE fonctionne sans internet. Idéal pour les sous-sols, caves, parkings et zones sans signal.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#f5f3ff;"><i data-lucide="palette" style="width:20px;height:20px;color:#7c3aed;"></i></div>
+        <h3>Marque blanche</h3>
+        <p>Votre logo, vos couleurs, votre message d'accueil. Vos clients voient votre marque, pas QBDP.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#fffbeb;"><i data-lucide="bell" style="width:20px;height:20px;color:#d97706;"></i></div>
+        <h3>Notifications push</h3>
+        <p>Alertes instantanées, messages de l'établissement, rappels de départ — tout reçu sur l'app en temps réel.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#fff7ed;"><i data-lucide="home" style="width:20px;height:20px;color:#ea580c;"></i></div>
+        <h3>Domotique intégrée</h3>
+        <p>Volets, lumières, serrures Nuki, Somfy TaHoma, Shelly, Tuya et 3 000+ appareils en un seul endroit.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#fef2f2;"><i data-lucide="map-pin" style="width:20px;height:20px;color:#dc2626;"></i></div>
+        <h3>Géofencing GPS</h3>
+        <p>L'app détecte votre approche et déclenche l'ouverture automatiquement. Configurable par zone et par personne.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Téléchargez l'application QBDP</h2>
+  <p>Disponible gratuitement sur iOS et Android. L'accès est activé par votre établissement.</p>
+  <div class="cta-btns">
+    <a href="https://apps.apple.com/app/qbdp" class="store-btn">
+      <i data-lucide="smartphone" style="width:22px;height:22px;"></i>
+      <span><span class="sub">Télécharger sur</span><span class="name">App Store</span></span>
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.qbdp" class="store-btn">
+      <i data-lucide="smartphone" style="width:22px;height:22px;"></i>
+      <span><span class="sub">Disponible sur</span><span class="name">Google Play</span></span>
+    </a>
+  </div>
+  <p style="color:rgba(255,255,255,0.6);font-size:14px;">Vous êtes un professionnel ?</p>
+  <a href="https://qbdp-admin.vercel.app?register=1" style="color:white;font-size:15px;font-weight:600;text-decoration:underline;margin-top:8px;display:inline-block;">Démarrer l'essai gratuit 15 jours →</a>
+</section>
+
+<footer>
+  <div><a href="/"><img src="assets/logo-full.png" alt="QBDP" style="height:40px;object-fit:contain;" /></a></div>
+  <p style="font-size:13px;color:#9ca3af;">© 2026 QBDP — Quality Badge & Digital Protocol — Solution 100% française</p>
+  <p style="font-size:13px;"><a href="mailto:contact@qbdp.fr" style="color:#6b7280;">contact@qbdp.fr</a></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<script>if(window.lucide) lucide.createIcons();</script>
+</body>
+</html>
